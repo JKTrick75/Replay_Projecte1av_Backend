@@ -1,6 +1,7 @@
 //REQUIRES
 const express = require('express'); 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
+const cors = require('cors'); //Cors para permitir el fetch desde externos
 
 //RUTAS
 const consolaRouter = require('./routes/consola');
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/replay');
 let app = express();
 
 // ================================================================================================================== //
+//Iniciamos cors 
+app.use(cors());
 
 //iniciamos middleware
 app.use(express.json());  //Para métodos que envias json como datos de entrada
