@@ -12,6 +12,11 @@ let juegoSchema = new mongoose.Schema({
         required: true,
         minlength: 3
     },
+    foto: {
+        type: String,
+        required: true,
+        minlength: 3
+    },
     consolas_disponibles: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'consolas'
