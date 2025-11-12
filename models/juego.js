@@ -7,7 +7,7 @@ let juegoSchema = new mongoose.Schema({
         minlength: 3,
         trim: true
     },
-    genere: {
+    genero: {
         type: String,
         required: true,
         minlength: 3
@@ -16,6 +16,10 @@ let juegoSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 3
+    },
+    precio: {
+        type: Number,
+        required: true
     },
     consolas_disponibles: [{
         type: mongoose.Schema.Types.ObjectId,

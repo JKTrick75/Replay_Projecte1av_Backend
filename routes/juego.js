@@ -50,8 +50,9 @@ router.post('/', (req, res) => {
     //nuevoJuego
     let nuevoJuego = new Juego({ 
         nom: req.body.nom, 
-        genere: req.body.genere,
-        foto: req.body.foto, 
+        genero: req.body.genero,
+        foto: req.body.foto,
+        precio: req.body.precio,
         consolas_disponibles: req.body.consolas_disponibles
     });
 
@@ -83,8 +84,9 @@ router.put('/:id', (req, res) => {
     Juego.findByIdAndUpdate(req.params.id, {
         $set: { 
             nom: req.body.nom, 
-            genere: req.body.genere,
+            genero: req.body.genero,
             foto: req.body.foto,
+            precio: req.body.precio,
             consolas_disponibles: req.body.consolas_disponibles
         } 
     }, {new: true}) //Per a retornar el document modificat
