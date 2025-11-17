@@ -1,6 +1,8 @@
 //REQUIRES
 const express = require('express');
+const mongoose = require('mongoose');
 const Juego = require('../models/juego');
+const Consola = require('../models/consola');
 const router = express.Router();
 
 // ============================================== //
@@ -8,14 +10,40 @@ const router = express.Router();
 // ============================================== //
 
 //Read juego
-router.get('/', (req, res) => { 
-    Juego.find().then(resultado => { 
-        res.status(200) 
-           .send( {ok: true, resultado: resultado}); 
-    }).catch (error => { 
-        res.status(500) 
-           .send( {ok: false, error: "Error obteniendo juego"}); 
-    }); 
+router.get('/', async (req, res) => {
+    try {
+        //Creamos el objeto filtro
+        let filtro = {};
+        //Leemos filtros
+        const { consola, marca, juego } = req.query;
+
+        if (juego) {
+            filtro._id = new mongoose.Types.ObjectId(juego);
+        } else if (consola) {
+            //Convertimos el STRING a OBJECTID
+            const consolaObjectId = new mongoose.Types.ObjectId(consola);
+
+            //Preparamos filtro (buscando por la id de esa consola)
+            filtro.consolas_disponibles = { $in: [consolaObjectId] };
+        } else if (marca) {
+            //Convertimos el STRING a OBJECTID
+            const marcaObjectId = new mongoose.Types.ObjectId(marca);
+
+            //Primero buscamos consolas que coincidan con el OBJECTID de la marca
+            const consolasDeMarca = await Consola.find({ marca_id: marcaObjectId }).select('_id');
+            
+            //Extraemos los IDs de las consolas de esa marca
+            const idsDeConsolas = consolasDeMarca.map(consola => consola._id);
+            
+            //Preparamos filtro (buscando por las ids de las consolas de esa marca)
+            filtro.consolas_disponibles = { $in: idsDeConsolas };
+        }
+
+        const resultado = await Juego.find(filtro);
+        res.status(200).send({ ok: true, resultado: resultado });
+    } catch (error) {
+        res.status(500).send({ ok: false, error: "Error obteniendo juegos" });
+    }
 });
 
 //Read juego (ID)
