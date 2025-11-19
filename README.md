@@ -12,7 +12,7 @@ El servidor está construido con **Node.js** y **Express**, y utiliza **MongoDB*
 
 Este proyecto se divide en dos repositorios:
 
-* **🖥️ Frontend:** [Ir al Repositorio del Backend](https://github.com/JKTrick75/Replay_Projecte1av_Frontend) - Interfaz de usuario (React + Vite).
+* **🖥️ Frontend:** [Ir al Repositorio del Frontend](https://github.com/JKTrick75/Replay_Projecte1av_Frontend) - Interfaz de usuario (React + Vite).
 * **⚙️ Backend API (Este repositorio) :** Servidor Node.js/Express + MongoDB.
 
 ---
