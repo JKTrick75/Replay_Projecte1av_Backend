@@ -1,4 +1,6 @@
-# ⚙️ Replay API: Backend Server
+# ⚙️ RePlay: Tienda de Segunda Mano (Backend)
+
+> **Live Demo:** [Ver Aplicación Desplegada en AWS Amplify](https://main.d30682b0n15jlt.amplifyapp.com/) 🚀
 
 Este repositorio contiene el código *backend* de **Replay**, la API RESTful encargada de gestionar la lógica de negocio, la base de datos y la comunicación de datos para la aplicación web de segunda mano.
 
