@@ -4,7 +4,16 @@ Este repositorio contiene el código *backend* de **Replay**, la API RESTful enc
 
 El servidor está construido con **Node.js** y **Express**, y utiliza **MongoDB** como base de datos NoSQL para un modelado de datos flexible y escalable.
 
-Actualmente, este backend da servicio al [Frontend de Replay](https://github.com/JKTrick75/Replay_Projecte1av) (enlazado al repositorio de React).
+---
+
+## 🔗 Enlaces del Proyecto
+
+Este proyecto se divide en dos repositorios:
+
+* **🖥️ Frontend:** [Ir al Repositorio del Backend](https://github.com/JKTrick75/Replay_Projecte1av_Frontend) - Interfaz de usuario (React + Vite).
+* **⚙️ Backend API (Este repositorio) :** Servidor Node.js/Express + MongoDB.
+
+---
 
 ## 🚀 Tecnologías Utilizadas
 
