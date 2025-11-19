@@ -1,4 +1,4 @@
-# ⚙️ RePlay: Tienda de Segunda Mano (Backend)
+# ⚙️ Replay: Tienda de Segunda Mano (Backend)
 
 > **Live Demo:** [Ver Aplicación Desplegada en AWS Amplify](https://main.d30682b0n15jlt.amplifyapp.com/) 🚀
 
@@ -54,11 +54,11 @@ Si quieres ejecutar este servidor en tu máquina local para desarrollo, sigue es
 
 1.  **Clona este repositorio:**
     ```bash
-    git clone [URL_DE_TU_REPOSITORIO_BACKEND]
+    git clone https://github.com/JKTrick75/Replay_Projecte1av_Backend Replay_Projecte1av_Backend
     ```
 2.  **Navega a la carpeta del proyecto:**
     ```bash
-    cd nombre-del-proyecto-backend
+    cd Replay_Projecte1av_Backend
     ```
 3.  **Instala las dependencias:**
     ```bash
