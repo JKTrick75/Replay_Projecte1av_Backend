@@ -13,6 +13,11 @@ let consolaSchema = new mongoose.Schema({
         min: 1900,
         max: 2100
     },
+    foto: {
+        type: String,
+        required: true,
+        minlength: 3
+    },
     marca_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'marcas'

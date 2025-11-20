@@ -51,6 +51,7 @@ router.post('/', (req, res) => {
     let nuevoConsola = new Consola({ 
         nom: req.body.nom, 
         any_eixida: req.body.any_eixida,
+        foto: req.body.foto,
         marca_id: req.body.marca_id
     });
 
@@ -83,6 +84,7 @@ router.put('/:id', (req, res) => {
         $set: { 
             nom: req.body.nom, 
             any_eixida: req.body.any_eixida,
+            foto: req.body.foto,
             marca_id: req.body.marca_id
         } 
     }, {new: true}) //Per a retornar el document modificat
