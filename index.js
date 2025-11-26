@@ -1,4 +1,5 @@
 //REQUIRES
+require('dotenv').config();
 const express = require('express'); 
 const mongoose = require('mongoose'); 
 const cors = require('cors'); //Cors para permitir el fetch desde externos
@@ -18,7 +19,7 @@ const marcaRouter = require('./routes/marca');
 // CONEXIÓN MONGODB ATLAS
 // ========================================================================
 
-const MONGO_URI = 'mongodb+srv://DavidMB:Patata123@cluster0.dmsjo4l.mongodb.net/Replay?appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('Conectado a MongoDB Atlas'))
