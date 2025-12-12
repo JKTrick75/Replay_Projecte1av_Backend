@@ -8,6 +8,8 @@ const cors = require('cors'); //Cors para permitir el fetch desde externos
 const consolaRouter = require('./routes/consola');
 const juegoRouter = require('./routes/juego');
 const marcaRouter = require('./routes/marca');
+const authRouter = require('./routes/auth');
+const usuarioRouter = require('./routes/usuario');
 
 // ========================================================================
 // CONEXIÓN MONGODB
@@ -45,6 +47,8 @@ app.use(express.urlencoded());  //Para métodos tradicionales de envío de datos
 app.use('/consola', consolaRouter);
 app.use('/juego', juegoRouter);
 app.use('/marca', marcaRouter);
+app.use('/auth', authRouter);
+app.use('/usuario', usuarioRouter);
 // ================================================================================================================== //
 
 //LANZAMOS EXPRESS (última línea)

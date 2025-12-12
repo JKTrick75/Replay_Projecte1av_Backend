@@ -1,6 +1,7 @@
 //REQUIRES
 const express = require('express');
 const Consola = require('../models/consola');
+const { verificarToken, esAdmin } = require('../middlewares/authjwt');
 const router = express.Router();
 
 // ============================================== //
@@ -46,7 +47,7 @@ router.get('/:id', (req, res) => {
 // ============================================== //
 
 //Create consola
-router.post('/', (req, res) => {
+router.post('/', [verificarToken, esAdmin], (req, res) => {
     //nuevoConsola
     let nuevoConsola = new Consola({ 
         nom: req.body.nom, 
@@ -79,7 +80,7 @@ router.post('/', (req, res) => {
 // ============================================== //
 
 //Update consola
-router.put('/:id', (req, res) => { 
+router.put('/:id', [verificarToken, esAdmin], (req, res) => { 
     Consola.findByIdAndUpdate(req.params.id, {
         $set: { 
             nom: req.body.nom, 
@@ -119,7 +120,7 @@ router.put('/:id', (req, res) => {
 // ============================================== //
 
 //Delete consola
-router.delete('/:id', (req, res) => { 
+router.delete('/:id', [verificarToken, esAdmin], (req, res) => { 
     Consola.findByIdAndDelete(req.params.id) 
     .then(resultado => { 
         if(resultado){

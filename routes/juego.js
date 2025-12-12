@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Juego = require('../models/juego');
 const Consola = require('../models/consola');
+const { verificarToken, esAdmin } = require('../middlewares/authjwt');
 const router = express.Router();
 
 // ============================================== //
@@ -74,7 +75,7 @@ router.get('/:id', (req, res) => {
 // ============================================== //
 
 //Create juego
-router.post('/', (req, res) => {
+router.post('/', [verificarToken, esAdmin], (req, res) => {
     //nuevoJuego
     let nuevoJuego = new Juego({ 
         nom: req.body.nom, 
@@ -108,7 +109,7 @@ router.post('/', (req, res) => {
 // ============================================== //
 
 //Update juego
-router.put('/:id', (req, res) => { 
+router.put('/:id', [verificarToken, esAdmin], (req, res) => { 
     Juego.findByIdAndUpdate(req.params.id, {
         $set: { 
             nom: req.body.nom, 
@@ -149,7 +150,7 @@ router.put('/:id', (req, res) => {
 // ============================================== //
 
 //Delete juego
-router.delete('/:id', (req, res) => { 
+router.delete('/:id', [verificarToken, esAdmin], (req, res) => { 
     Juego.findByIdAndDelete(req.params.id) 
     .then(resultado => { 
         if(resultado){

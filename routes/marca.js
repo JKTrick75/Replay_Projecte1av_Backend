@@ -1,6 +1,7 @@
 //REQUIRES
 const express = require('express');
 const Marca = require('../models/marca');
+const { verificarToken, esAdmin } = require('../middlewares/authjwt');
 const router = express.Router();
 
 // ============================================== //
@@ -46,7 +47,7 @@ router.get('/:id', (req, res) => {
 // ============================================== //
 
 //Create marca
-router.post('/', (req, res) => {
+router.post('/', [verificarToken, esAdmin], (req, res) => {
     //nuevoMarca
     let nuevoMarca = new Marca({ 
         nom: req.body.nom, 
@@ -77,7 +78,7 @@ router.post('/', (req, res) => {
 // ============================================== //
 
 //Update marca
-router.put('/:id', (req, res) => { 
+router.put('/:id', [verificarToken, esAdmin], (req, res) => { 
     Marca.findByIdAndUpdate(req.params.id, {
         $set: { 
             nom: req.body.nom, 
@@ -115,7 +116,7 @@ router.put('/:id', (req, res) => {
 // ============================================== //
 
 //Delete marca
-router.delete('/:id', (req, res) => { 
+router.delete('/:id', [verificarToken, esAdmin], (req, res) => { 
     Marca.findByIdAndDelete(req.params.id) 
     .then(resultado => { 
         if(resultado){
